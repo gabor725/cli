@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	. "code.cloudfoundry.org/cli/api/cloudcontroller/ccv2"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	. "github.com/onsi/gomega/ghttp"
@@ -24,18 +23,18 @@ var _ = Describe("Service Instance", func() {
 				"resources": [
 					{
 						"metadata": {
-							"guid": "some-service-guid-1"
+							"guid": "service-guid-1"
 						},
 						"entity": {
-							"name": "some-service-name-1"
+							"name": "service-name-1"
 						}
 					},
 					{
 						"metadata": {
-							"guid": "some-service-guid-2"
+							"guid": "service-guid-2"
 						},
 						"entity": {
-							"name": "some-service-name-2"
+							"name": "service-name-2"
 						}
 					}
 				]
@@ -45,18 +44,18 @@ var _ = Describe("Service Instance", func() {
 				"resources": [
 					{
 						"metadata": {
-							"guid": "some-service-guid-3"
+							"guid": "service-guid-3"
 						},
 						"entity": {
-							"name": "some-service-name-3"
+							"name": "service-name-3"
 						}
 					},
 					{
 						"metadata": {
-							"guid": "some-service-guid-4"
+							"guid": "service-guid-4"
 						},
 						"entity": {
-							"name": "some-service-name-4"
+							"name": "service-name-4"
 						}
 					}
 				]
@@ -84,10 +83,10 @@ var _ = Describe("Service Instance", func() {
 				}})
 				Expect(err).NotTo(HaveOccurred())
 				Expect(serviceInstances).To(ConsistOf([]ServiceInstance{
-					{Name: "some-service-name-1", GUID: "some-service-guid-1"},
-					{Name: "some-service-name-2", GUID: "some-service-guid-2"},
-					{Name: "some-service-name-3", GUID: "some-service-guid-3"},
-					{Name: "some-service-name-4", GUID: "some-service-guid-4"},
+					{Name: "service-name-1", GUID: "service-guid-1"},
+					{Name: "service-name-2", GUID: "service-guid-2"},
+					{Name: "service-name-3", GUID: "service-guid-3"},
+					{Name: "service-name-4", GUID: "service-guid-4"},
 				}))
 				Expect(warnings).To(ConsistOf(Warnings{"this is a warning", "this is another warning"}))
 			})
