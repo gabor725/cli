@@ -65,10 +65,13 @@ func (client *CloudControllerClient) GetApplications(queryParams []Query) ([]App
 	return fullAppsList, fullWarningsList, nil
 }
 
-func (client *CloudControllerClient) GetRouteApplications(routeGUID string) ([]Application, Warnings, error) {
+// GetRouteApplications returns a list of Applications associated with a route
+// GUID, filtered by provided queries.
+func (client *CloudControllerClient) GetRouteApplications(routeGUID string, queryParams []Query) ([]Application, Warnings, error) {
 	request := cloudcontroller.Request{
 		RequestName: internal.AppsFromRouteRequest,
 		Params:      map[string]string{"route_guid": routeGUID},
+		Query:       FormatQueryParameters(queryParams),
 	}
 
 	fullAppsList := []Application{}
